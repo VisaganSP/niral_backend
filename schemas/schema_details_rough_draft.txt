@@ -1,0 +1,10 @@
+1 -> admin table for adding privilages
+2 -> participants table with registration details (cegian, other_clg, professional)
+registered
+(type - events or workshop or both) --> get data accordingly
+(payment will also be maintained here!)
+(pass - every pass includes a payment details in it...)
+(passes - events, workshop, hackathon)
+3 -> registration table for storing event or workshop or hackathon registered users details
+(event1, event2, etc.,)
+4 -> transaction (participant_id, transaction_id, pass_id)
