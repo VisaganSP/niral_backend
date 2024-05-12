@@ -1,2 +1,46 @@
+# Dependency directories
+node_modules/
+
+# Environment variables file
 .env
-node_modules
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Editor/IDE settings
+.vscode/
+.idea/
+
+# Environment configuration
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build artifacts
+build/
+dist/
+
+# Compiled binary addons (if any)
+*.node
+
+# Optional npm cache directory
+.npm
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore all files that begin with a dot in the root directory
+.*
+
+# Ignore all files that begin with a tilde
+~*
+
+# Ignore all files that end with a tilde
+*~
