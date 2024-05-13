@@ -36,7 +36,7 @@ var registrationSchema = {
                 },
                 minItems: 1,
                 maxItems: 2,
-                uniqueItems: "true",
+                uniqueItems: true,
               },
               round1Status: {
                 bsonType: "bool",
@@ -44,7 +44,7 @@ var registrationSchema = {
               },
               round2Status: {
                 bsonType: "string",
-                enum: ["first", "second", "third"],
+                enum: ["first", "second", "third", "none"],
                 description: "must be a string enum and is required",
               },
             },
@@ -100,7 +100,7 @@ var registrationSchema = {
                 },
                 minItems: 1,
                 maxItems: 3,
-                uniqueItems: "true",
+                uniqueItems: true,
               },
               round1Status: {
                 bsonType: "bool",
@@ -108,7 +108,7 @@ var registrationSchema = {
               },
               round2Status: {
                 bsonType: "string",
-                enum: ["first", "second", "third"],
+                enum: ["first", "second", "third", "none"],
                 description: "must be a string enum and is required",
               },
             },

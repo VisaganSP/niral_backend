@@ -21,13 +21,13 @@ var eventSchema = {
                 items: {
                   type: "string",
                 },
-                minItems: 1,
+                minItems: 0,
                 maxItems: 2,
                 uniqueItems: "true",
               },
               round2Qualifiers: {
                 bsonType: "object",
-                required: ["first", "second", "third"],
+                required: ["first", "second", "third", "none"],
                 properties: {
                   first: {
                     bsonType: "string",
@@ -38,6 +38,10 @@ var eventSchema = {
                     description: "must be a string and is required",
                   },
                   third: {
+                    bsonType: "string",
+                    description: "must be a string and is required",
+                  },
+                  none: {
                     bsonType: "string",
                     description: "must be a string and is required",
                   },
@@ -61,13 +65,13 @@ var eventSchema = {
                 items: {
                   type: "string",
                 },
-                minItems: 1,
+                minItems: 0,
                 maxItems: 2,
                 uniqueItems: "true",
               },
               round2Qualifiers: {
                 bsonType: "object",
-                required: ["first", "second", "third"],
+                required: ["first", "second", "third", "none"],
                 properties: {
                   first: {
                     bsonType: "string",
@@ -81,12 +85,60 @@ var eventSchema = {
                     bsonType: "string",
                     description: "must be a string and is required",
                   },
+                  none: {
+                    bsonType: "string",
+                    description: "must be a string and is required",
+                  },
                 },
               },
             },
           },
         },
       },
+      // workshop: {
+      //   bsonType: "object",
+      //   required: ["workshop1"],
+      //   properties: {
+      //     workshop: {
+      //       bsonType: "object",
+      //       required: ["round1Qualifiers", "round2Qualifiers"],
+      //       properties: {
+      //         round1Qualifiers: {
+      //           bsonType: "array",
+      //           required: [],
+      //           items: {
+      //             type: "string",
+      //           },
+      //           minItems: 0,
+      //           maxItems: 2,
+      //           uniqueItems: "true",
+      //         },
+      //         round2Qualifiers: {
+      //           bsonType: "object",
+      //           required: ["first", "second", "third", "none"],
+      //           properties: {
+      //             first: {
+      //               bsonType: "string",
+      //               description: "must be a string and is required",
+      //             },
+      //             second: {
+      //               bsonType: "string",
+      //               description: "must be a string and is required",
+      //             },
+      //             third: {
+      //               bsonType: "string",
+      //               description: "must be a string and is required",
+      //             },
+      //             none: {
+      //               bsonType: "string",
+      //               description: "must be a string and is required",
+      //             },
+      //           },
+      //         },
+      //       },
+      //     },
+      //   },
+      // },
     },
   },
 };
