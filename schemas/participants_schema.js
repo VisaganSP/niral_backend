@@ -47,8 +47,8 @@ var participantsSchema = {
             description: "must be a string",
           },
           dateOfBirth: {
-            bsonType: "date",
-            description: "must be a date and is required",
+            bsonType: "string",
+            description: "must be a string and is required",
           },
           department: {
             bsonType: "string",

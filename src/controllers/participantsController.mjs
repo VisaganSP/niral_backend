@@ -12,6 +12,7 @@ export const getAllParticipants = async (req, res) => {
 };
 
 export const createParticipant = async (req, res) => {
+  console.log(req.body);
   const participant = new Participant(req.body);
   try {
     const newParticipant = await participant.save();

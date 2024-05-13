@@ -14,7 +14,7 @@ const participantSchema = new mongoose.Schema({
       lastName: { type: String },
       mobileNo: { type: String, required: true },
       rollNo: { type: String },
-      dateOfBirth: { type: Date, required: true },
+      dateOfBirth: { type: String, required: true },
       department: { type: String },
       branch: { type: String },
       year: { type: Number },
@@ -53,6 +53,6 @@ const participantSchema = new mongoose.Schema({
   },
 });
 
-const Participant = mongoose.model("Participant", participantSchema);
+const Participant = mongoose.model("participants", participantSchema);
 
 export default Participant;

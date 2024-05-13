@@ -1,0 +1,24 @@
+{
+    "_id": "2",
+    "details": {
+      "emailId": "example@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "mobileNo": "1234567890",
+      "dateOfBirth": "1990-01-01T00:00:00Z",
+      "password": "password123",
+      "state": "California",
+      "city": "Los Angeles"
+    },
+    "organization": "cegian",
+    "permit": {
+      "pass1": true,
+      "pass2": false,
+      "pass3": true
+    },
+    "paymentHistory": {
+      "transactionId": "1234567890",
+      "UpiId": "example@upi"
+    },
+    "eventsPoints": 100
+  }

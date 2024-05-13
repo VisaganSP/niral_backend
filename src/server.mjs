@@ -22,6 +22,12 @@ mongoose
 // Routes
 app.use("/participants", participantsRoutes);
 
+
+app.post('/api/postData', (req, res) => {
+  console.log('Received POST request with body:', req.body);
+  res.send('Data received successfully');
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
