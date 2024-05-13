@@ -19,11 +19,12 @@ var participantsSchema = {
         required: [
           "emailId",
           "firstName",
+          "lastName",
           "mobileNo",
           "dateOfBirth",
           "password",
-          "state",
-          "city",
+          // "state",
+          // "city",
         ],
         properties: {
           emailId: {
