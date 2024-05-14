@@ -99,16 +99,19 @@ var participantsSchema = {
         required: ["pass1", "pass2", "pass3"],
         properties: {
           pass1: {
-            bsonType: "bool",
-            description: "must be a bool and is required",
+            bsonType: "string",
+            enum:["applied", "verified","rejected","none" ],
+            description: "must be a string enum and is required",
           },
           pass2: {
-            bsonType: "bool",
-            description: "must be a bool and is required",
+            bsonType: "string",
+            enum:["applied", "verified","rejected","none" ],
+            description: "must be a string enum and is required",
           },
           pass3: {
-            bsonType: "bool",
-            description: "must be a bool and is required",
+            bsonType: "string",
+            enum:["applied", "verified","rejected","none" ],
+            description: "must be a string enum and is required",
           },
         },
       },

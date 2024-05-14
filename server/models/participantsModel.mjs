@@ -8,7 +8,7 @@ const participantSchema = new mongoose.Schema({
   },
   details: {
     type: {
-      emailId: { type: String, required: true, description: 'must be a string and is required' },
+      emailId: { type: String, required: true, unique: true,description: 'must be a string and is required' },
       firstName: { type: String, required: true, description: 'must be a string and is required' },
       lastName: { type: String, required: true, description: 'must be a string and is required' },
       mobileNo: { type: String, required: true, description: 'must be a string and is required' },
@@ -34,9 +34,9 @@ const participantSchema = new mongoose.Schema({
   },
   permit: {
     type: {
-      pass1: { type: Boolean, required: true, description: 'must be a bool and is required' },
-      pass2: { type: Boolean, required: true, description: 'must be a bool and is required' },
-      pass3: { type: Boolean, required: true, description: 'must be a bool and is required' }
+      pass1: { type: String, required: true,  enum:["applied", "verified","rejected","none" ], description: 'must be a string enum and is required' },
+      // pass2: { type: String, required: true,  enum:["applied", "verified","rejected","none" ], description: 'must be a string enum and is required' },
+      // pass3: { type: String, required: true,  enum:["applied", "verified","rejected","none" ], description: 'must be a string enum and is required' },
     },
     required: true
   },
