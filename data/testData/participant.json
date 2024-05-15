@@ -12,9 +12,9 @@
   },
   "organization": "cegian",
   "permit": {
-    "pass1": true,
-    "pass2": false,
-    "pass3": true
+    "pass1": "none",
+    "pass2": "none",
+    "pass3": "none"
   },
   "paymentHistory": {
     "transactionId": "1234567890",
