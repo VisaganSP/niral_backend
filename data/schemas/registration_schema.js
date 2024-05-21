@@ -1,7 +1,7 @@
 var registrationSchema = {
   $jsonSchema: {
     bsonType: "object",
-    required: ["_id", "events", "workshops", "hackathons"],
+    required: ["_id"],
     properties: {
       _id: {
         bsonType: "string",
@@ -9,7 +9,7 @@ var registrationSchema = {
       },
       events: {
         bsonType: "object",
-        required: ["event1"],
+        required: [],
         properties: {
           event1: {
             bsonType: "object",
@@ -53,7 +53,7 @@ var registrationSchema = {
       },
       workshops: {
         bsonType: "object",
-        required: ["workshop1", "hasAttended"],
+        required: [],
         properties: {
           workshop1: {
             bsonType: "object",

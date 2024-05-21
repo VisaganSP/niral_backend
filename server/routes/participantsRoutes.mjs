@@ -3,6 +3,8 @@ import {
   createParticipant,
   getAllParticipants,
   getDetailsByEmail,
+  getPermit,
+  loginParticipant,
 } from "../controllers/participantsController.mjs";
 
 const router = express.Router();
@@ -16,7 +18,8 @@ const router = express.Router();
 
 // Registration
 router.post("/register", createParticipant);
-
+router.post('/login', loginParticipant)
+router.post('/permit', getPermit)
 // Login
 // router.post("/login", login);
 

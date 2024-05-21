@@ -2,9 +2,8 @@ var adminSchema = {
   $jsonSchema: {
     bsonType: "object",
     required: [
-      "_id",
+      "_id", // "adminRollno",
       "adminName",
-      "adminRollno",
       "adminPassword",
       "permissions",
     ],
@@ -14,10 +13,6 @@ var adminSchema = {
         description: "must be a string and is required",
       },
       adminName: {
-        bsonType: "string",
-        description: "must be a string and is required",
-      },
-      adminRollno: {
         bsonType: "string",
         description: "must be a string and is required",
       },

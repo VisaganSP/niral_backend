@@ -1,13 +1,12 @@
-var logSchema = {
+// logModel.mjs
+import mongoose from 'mongoose';
+
+const logSchema = {
   $jsonSchema: {
     bsonType: "object",
-    required: ["_id", "timestamp", "adminId", "activity"],
+    required: ["_id", "timestamp", "adminId", "activity", "affectedUserId"],
     properties: {
       _id: {
-        bsonType: "string",
-        description: "must be a string and is required",
-      },
-      timestamp: {
         bsonType: "string",
         description: "must be a string and is required",
       },
@@ -19,6 +18,16 @@ var logSchema = {
         bsonType: "string",
         description: "must be a string and is required",
       },
+      affectedUserId: {
+        bsonType: "string",
+        description: "must be a string",
+      },
     },
   },
+  strict: true, // Set strict mode to true
 };
+
+const LogModel = mongoose.model('Log', logSchema);
+
+
+export default LogModel;
