@@ -34,7 +34,7 @@ app.use('/auth', jwtRoutes)
 // app.use('/registrations', registrationsRoutes);
 // app.use('/events', eventsRoutes);
 // app.use('/logs', logsRoutes);
-app.use('/admins', adminsRoutes);
+app.use('/admin', adminsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)

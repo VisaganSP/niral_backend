@@ -9,8 +9,9 @@ import {
   addAdmin,
   manageAdmins,
   removeAdmin,
-  managePayments,
   manageEvents,
+  getPending,
+  setStatus,
 } from '../controllers/adminsController.mjs'
 
 const router = express.Router()
@@ -22,28 +23,23 @@ router.get('/participants/user/:userId', getParticipantsByUserId)
 // Get All Participants by email
 router.get('/participants/email/:email', getParticipantsByEmail)
 
-// Add Participant
-router.post('/participants/add', addParticipant)
-
 // Manage Participant
-router.get('/participants/manage', manageParticipants)
-
-// Remove Participant
+router.post('/participants/add', addParticipant)
+router.post('/participants/manage', manageParticipants)
 router.delete('/participants/remove/:participantId', removeParticipant)
 
-// Add Admin
-router.post('/admins/add', addAdmin)
-
 // Manage Admin
-router.get('/admins/manage', manageAdmins)
-
-// Remove Admin
-router.delete('/admins/remove/:adminId', removeAdmin)
+router.post('/manageAdmins/add', addAdmin)
+router.post('/manageAdmins/manage', manageAdmins)
+router.delete('/manageAdmins/remove/:adminId', removeAdmin)
 
 // Manage Payments
-router.get('/payments/manage', managePayments)
+// router.get('/payments/all', getAllPayments)
+router.get('/payments/getPending', getPending)
+router.put('/payments/setStatus', setStatus)
+
 
 // Manage Events
 router.get('/events/manage', manageEvents)
 
-export { router }
+export default router;

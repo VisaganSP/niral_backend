@@ -13,9 +13,10 @@ const transactionSchema = new mongoose.Schema(
       description: 'must be a string and is required',
     },
     status: {
-      type: Boolean,
+      type: String,
       required: true,
-      description: 'must be a bool and is required',
+      enum: ['pending', 'verified', 'rejected'],
+      description: 'must be a string enum and is required',
     },
     date: {
       type: String,

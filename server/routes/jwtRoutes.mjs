@@ -4,6 +4,6 @@ import {  partcipantLogin } from '../jwt.mjs'
 const router = express.Router()
 
 // Login route
-router.post('/login', partcipantLogin)
+router.post('/partcipantLogin', partcipantLogin)
 
 export default router

@@ -48,7 +48,6 @@ export function createToken(payload, expiresIn = '3d') {
 }
 
 export function validateToken(token) {
-
   try {
     return jwt.verify(token, secretKey)
   } catch (error) {
