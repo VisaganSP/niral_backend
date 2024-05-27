@@ -12,11 +12,14 @@ import {
   manageEvents,
   getPending,
   setStatus,
+  getAll,
+  AdminLogin,
 } from '../controllers/adminsController.mjs'
 
 const router = express.Router()
 
 // Define routes for admins
+router.post('/login', AdminLogin)
 // Get All Participants by userId
 router.get('/participants/user/:userId', getParticipantsByUserId)
 
@@ -34,12 +37,14 @@ router.post('/manageAdmins/manage', manageAdmins)
 router.delete('/manageAdmins/remove/:adminId', removeAdmin)
 
 // Manage Payments
-// router.get('/payments/all', getAllPayments)
+router.get('/payments/all', getAll)
 router.get('/payments/getPending', getPending)
 router.put('/payments/setStatus', setStatus)
 
 
 // Manage Events
 router.get('/events/manage', manageEvents)
+router.get('/events/register', )
+router.get('/events/register', )
 
 export default router;

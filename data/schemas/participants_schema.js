@@ -100,16 +100,16 @@ var participantsSchema = {
         properties: {
           p1: {
             bsonType: 'object',
-            required: ['_id', 'genAiPermit'],
+            required: ['transactionId', 'status'],
             properties: {
-              _id: {
+              transactionId: {
                 bsonType: 'string',
                 description: 'must be a string and is required',
               },
-              genAiPermit: {
+              status: {
                 bsonType: 'string',
                 description: 'must be a string enum and is required',
-                enum: ['applied', 'verified', 'rejected', 'none'],
+                enum: ['applied', 'verified', 'rejected'],
               },
             },
 

@@ -2,6 +2,11 @@
 
 import Transaction from '../models/transactionModel.mjs'
 
+
+export const AdminLogin = (req, res) => {
+  // Logic to get all participants
+}
+
 // Function to get all participants
 export const getAllParticipants = (req, res) => {
   // Logic to get all participants
@@ -52,8 +57,18 @@ export const removeAdmin = (req, res) => {
   // Logic to remove admin
 }
 
-export const getAll = (req, res) => {
+export const getAll = async (req, res) => {
   // Logic to get all payments
+  try {
+    // Find all transactions
+    const transactions = await Transaction.find()
+    console.log('trans: ', transactions)
+    // Send the transactions as a response
+    res.status(200).json({ transactions })
+  } catch (error) {
+    // If an error occurs, send an error response
+    res.status(500).json({ error: error.message })
+  }
 }
 
 // Function to manage payments
@@ -71,9 +86,30 @@ export const getPending = async (req, res) => {
 }
 
 export const setStatus = async (req, res) => {
-  const { } = req.body || []
-  
-}
+  try {
+    const transactionStatusList = req.body || [];
+
+    // Create an array of promises for updating each document
+    const updatePromises = transactionStatusList.map(async element => {
+      const docs = await Transaction.findOneAndUpdate(
+        { userId: element.userId },
+        { status: element.newStatus },
+        { new: true }
+      );
+      console.log(`userID: ${docs.userId} status: ${docs.status}`);
+      // console.log( element.userId, element. newStatus);
+    });
+
+    // Wait for all promises to resolve
+    await Promise.all(updatePromises);
+
+    // Send the status as a response
+    res.status(200).json({ message: "Status Update Successful" });
+  } catch (error) {
+    // If an error occurs, send an error response
+    res.status(500).json({ error: error.message });
+  }
+};
 
 // Function to manage events
 export const manageEvents = (req, res) => {
