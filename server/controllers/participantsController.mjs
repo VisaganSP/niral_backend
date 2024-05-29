@@ -185,17 +185,6 @@ export const getPermit = async (req, res) => {
 
 // export const payment = async (req, res) => {}
 
-// Get all participants
-export const getAllParticipants = async (req, res) => {
-  try {
-    const participants = await ParticipantsModel.find()
-    res.status(200).json(participants)
-  } catch (error) {
-    console.error('Error fetching all participants:', error)
-    res.status(500).json({ message: 'Internal server error' })
-  }
-}
-
 export const getDetailsByEmail = async (req, res) => {
   try {
     const { emailId } = req.body

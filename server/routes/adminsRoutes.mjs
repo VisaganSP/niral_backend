@@ -2,7 +2,7 @@
 import express from 'express'
 import {
   addParticipant,
-  getParticipantsByUserId,
+  getParticipantByUserId,
   getParticipantsByEmail,
   manageParticipants,
   removeParticipant,
@@ -14,6 +14,8 @@ import {
   setStatus,
   getAll,
   AdminLogin,
+  getAllAdmins,
+  getAdmin,
 } from '../controllers/adminsController.mjs'
 
 const router = express.Router()
@@ -21,7 +23,7 @@ const router = express.Router()
 // Define routes for admins
 router.post('/login', AdminLogin)
 // Get All Participants by userId
-router.get('/participants/user/:userId', getParticipantsByUserId)
+router.get('/participants/user/:userId', getParticipantByUserId)
 
 // Get All Participants by email
 router.get('/participants/email/:email', getParticipantsByEmail)
@@ -32,12 +34,14 @@ router.post('/participants/manage', manageParticipants)
 router.delete('/participants/remove/:participantId', removeParticipant)
 
 // Manage Admin
+router.get('/manageAdmins/all', getAllAdmins)
+router.get('/manageAdmins/admin/:adminId', getAdmin)
 router.post('/manageAdmins/add', addAdmin)
-router.post('/manageAdmins/manage', manageAdmins)
+router.put('/manageAdmins/manage/:adminId', manageAdmins)
 router.delete('/manageAdmins/remove/:adminId', removeAdmin)
 
 // Manage Payments
-router.get('/payments/all', getAll)
+router.get('/payments/getAll', getAll)
 router.get('/payments/getPending', getPending)
 router.put('/payments/setStatus', setStatus)
 

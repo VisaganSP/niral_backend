@@ -1,8 +1,6 @@
 import express from "express";
 import {
   createParticipant,
-  getAllParticipants,
-  getDetailsByEmail,
   getPermit,
   loginParticipant,
 } from "../controllers/participantsController.mjs";
