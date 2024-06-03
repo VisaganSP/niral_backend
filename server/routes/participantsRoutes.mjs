@@ -1,7 +1,7 @@
 import express from "express";
 import {
   createParticipant,
-  getPermit,
+  requestPermit,
   loginParticipant,
 } from "../controllers/participantsController.mjs";
 
@@ -17,7 +17,7 @@ const router = express.Router();
 // Registration
 router.post("/register", createParticipant);
 router.post('/login', loginParticipant)
-router.post('/permit', getPermit)
+router.post('/permit', requestPermit)
 // Login
 // router.post("/login", login);
 

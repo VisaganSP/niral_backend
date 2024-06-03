@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const participantSchema = new mongoose.Schema(
   {
@@ -68,38 +68,98 @@ const participantSchema = new mongoose.Schema(
         p1: {
           status: {
             type: String,
-            required: true,
             enum: ['applied', 'verified', 'rejected', 'none'],
-            description: 'must be a string enum and is required',
+            description: 'must be a string enum',
           },
           transactionId: {
             type: String,
-            required: true,
-            description: 'must be a string and is required',
+            description: 'must be a string',
           },
           transactionDate:{
             type:String,
-            required:true,
-            description: 'must be a string and is required',
+            description: 'must be a string',
           },
           updatedDate:{
             type:String,
-            description: 'must be a string and is required',
+            description: 'must be a string',
+          }
+        },
+        p2: {
+          status: {
+            type: String,
+            enum: ['applied', 'verified', 'rejected', 'none'],
+            description: 'must be a string enum',
+          },
+          transactionId: {
+            type: String,
+            description: 'must be a string',
+          },
+          transactionDate:{
+            type:String,
+            description: 'must be a string',
+          },
+          updatedDate:{
+            type:String,
+            description: 'must be a string',
+          }
+        },
+        p3: {
+          status: {
+            type: String,
+            enum: ['applied', 'verified', 'rejected', 'none'],
+            description: 'must be a string enum',
+          },
+          transactionId: {
+            type: String,
+            description: 'must be a string',
+          },
+          transactionDate:{
+            type:String,
+            description: 'must be a string',
+          },
+          updatedDate:{
+            type:String,
+            description: 'must be a string',
+          }
+        },
+        p4: {
+          status: {
+            type: String,
+            enum: ['applied', 'verified', 'rejected', 'none'],
+            description: 'must be a string enum',
+          },
+          transactionId: {
+            type: String,
+            description: 'must be a string',
+          },
+          transactionDate:{
+            type:String,
+            description: 'must be a string',
+          },
+          updatedDate:{
+            type:String,
+            description: 'must be a string',
           }
         },
       },
     },
     paymentHistory: [
       {
+        transactionDate:{
+          type:String,
+          required:true,
+          description: 'must be a string and is required',
+        },
         transactionId: {
           type: String,
           required: true,
-          description: 'Must be a string and is required',
+          description: 'must be a string and is required',
         },
         status: {
-          type: Boolean,
+          type: String,
+          enum: ['pending', 'verified', 'rejected'],
           required: true,
-          description: 'Must be a boolean and is required',
+          description: 'must be a string enum and is required',
         },
       },
     ],
@@ -112,8 +172,8 @@ const participantSchema = new mongoose.Schema(
     strict: true,
     validateBeforeSave: 'error',
   },
-)
+);
 
-const Participant = mongoose.model('Participant', participantSchema, 'participants')
+const Participant = mongoose.model('Participant', participantSchema, 'participants');
 
-export default Participant
+export default Participant;

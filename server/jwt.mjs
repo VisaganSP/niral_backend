@@ -32,7 +32,7 @@ export const partcipantLogin = async (req, res) => {
 
     const userDetails = await Participant.findOne({ _id: loginUser.userId })
     if (userDetails) {
-      const token = createToken({ email: email, uid: loginUser._id, password: loginUser.password, userType: 'participant' })
+      const token = createToken({ email: email, uid: loginUser.userId, password: loginUser.password, userType: 'participant' })
       return res.status(201).json({ token, userDetails })
     } else {
       return res.status(404).json({ error: 'User details not found' })

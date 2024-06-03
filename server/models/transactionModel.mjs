@@ -18,10 +18,20 @@ const transactionSchema = new mongoose.Schema(
       enum: ['pending', 'verified', 'rejected'],
       description: 'must be a string enum and is required',
     },
-    date: {
-      type: String,
-      required: true,
+    transactionDate:{
+      type:String,
+      required:true,
       description: 'must be a string and is required',
+    },
+    updatedDate:{
+      type:String,
+      required:false,
+      description: 'must be a string and is required',
+    },permitId:{
+      type: String,
+          enum: ['p1', 'p2', 'p3', 'p4'],
+          required: true,
+          description: 'must be a string enum and is required',
     },
   },
   {
