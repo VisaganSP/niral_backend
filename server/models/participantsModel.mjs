@@ -39,6 +39,10 @@ const paymentHistorySchema = new mongoose.Schema({
     required: true,
     description: 'must be a string enum and is required',
   },
+  updatedDate: {
+    type: String,
+    description: 'must be a string and is required',
+  },
 });
 
 const participantSchema = new mongoose.Schema(

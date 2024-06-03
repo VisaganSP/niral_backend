@@ -320,24 +320,17 @@ export const getPending = async (req, res) => {
 
 export const setStatus = async (req, res) => {
   try {
-    const transactionStatusList = req.body || [];
+    const {pendingList, verifiedList, rejectedList, deletedlist} = req.body;
+pendingListTransactionId = pendingList.filter((transaction)=> transaction.status === "pending")
+verifiedListTransactionId = verifiedList.filter((transaction)=> transaction.status === "verified")
+rejectedListTransactionId = rejectedList.filter((transaction)=> transaction.status === "rejected")
+deletedlistTransactionId = deletedlist.filter((transaction)=> transaction.status === "deleted")
 
-    // Create an array of promises for updating each document
-    const updatePromises = transactionStatusList.map(async (element) => {
-      const docs = await Transaction.findOneAndUpdate(
-        { userId: element.userId },
-        { status: element.newStatus },
-        { new: true }
-      );
-      console.log(`userID: ${docs.userId} status: ${docs.status}`);
-      // console.log( element.userId, element. newStatus);
-    });
+    await Transaction.updateMany({ _id: { $in: pendingListTransactionId } }, { status: "pending" });
+    await Transaction.updateMany({ _id: { $in: verifiedListTransactionId } }, { status: "verified" });
+    await Transaction.updateMany({ _id: { $in: rejectedListTransactionId } }, { status: "rejected" });
 
-    // Wait for all promises to resolve
-    await Promise.all(updatePromises);
-
-    // Send the status as a response
-    res.status(200).json({ message: "Status Update Successful" });
+   
   } catch (error) {
     // If an error occurs, send an error response
     res.status(500).json({ error: error.message });

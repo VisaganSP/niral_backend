@@ -164,7 +164,7 @@ export const requestPermit = async (req, res) => {
     }
 
     // Add permit if it doesn't exist
-    participant.permit = participant.permit || {}
+    participant.permit = participant.permit || {};
     participant.permit[permitID] = {
       status: "applied",
       transactionId: transactionId,
@@ -193,11 +193,18 @@ export const requestPermit = async (req, res) => {
     // participant.paymentHistory = participant.paymentHistory || [];
 
     // Add new entry to paymentHistory
-    participant.paymentHistory.push({
-      transactionId: transactionId,
+    // participant.paymentHistory.push({
+    //   transactionId: transactionId,
+    //   transactionDate: transactionDate,
+    //   status: "pending",
+    // });
+
+    participant.paymentHistory[transactionId] = {
       transactionDate: transactionDate,
       status: "pending",
-    });
+      updatedDate:
+        new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
+    };
 
     // Save the participant
     await participant.save();
