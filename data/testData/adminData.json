@@ -1,0 +1,182 @@
+[
+  {
+    "_id": "2024000000",
+    "adminName": "NIRAL CEG",
+    "adminPassword": "123",
+    "level": 0,
+    "permissions": {
+      "manageNewAdmins": true,
+      "manageParticipants": true,
+      "manageResults": true,
+      "manageEventRegistrations": true,
+      "managePaymentStatus": true,
+      "eventRightsGiven": {
+        "te1": true,
+        "te2": true,
+        "te3": true,
+        "te4": true,
+        "te5": true,
+        "te6": true,
+        "te7": true,
+        "te8": true,
+        "te9": true,
+        "nte1": true,
+        "nte2": true,
+        "nte3": true,
+        "nte4": true,
+        "nte5": true,
+        "ws1": true
+      }
+    }
+  }
+    ,{
+      "_id": "2023171234",
+      "adminName": "John Doe",
+      "adminPassword": "password123",
+      "level": 3,
+      "permissions": {
+        "manageNewAdmins": true,
+        "manageParticipants": false,
+        "manageResults": true,
+        "manageEventRegistrations": false,
+        "managePaymentStatus": true,
+        "eventRightsGiven": {
+          "te1": true,
+          "te2": false,
+          "te3": true,
+          "te4": false,
+          "te5": true,
+          "te6": false,
+          "te7": true,
+          "te8": false,
+          "te9": true,
+          "nte1": false,
+          "nte2": true,
+          "nte3": false,
+          "nte4": true,
+          "nte5": false,
+          "ws1": true
+        }
+      }
+    },
+    {
+      "_id": "2023175678",
+      "adminName": "Alice Smith",
+      "adminPassword": "securePass",
+      "level": 2,
+      "permissions": {
+        "manageNewAdmins": false,
+        "manageParticipants": true,
+        "manageResults": false,
+        "manageEventRegistrations": true,
+        "managePaymentStatus": false,
+        "eventRightsGiven": {
+          "te1": false,
+          "te2": true,
+          "te3": false,
+          "te4": true,
+          "te5": false,
+          "te6": true,
+          "te7": false,
+          "te8": true,
+          "te9": false,
+          "nte1": true,
+          "nte2": false,
+          "nte3": true,
+          "nte4": false,
+          "nte5": true,
+          "ws1": false
+        }
+      }
+    },
+    {
+      "_id": "2023179876",
+      "adminName": "Emily Johnson",
+      "adminPassword": "emilyPass123",
+      "level": 1,
+      "permissions": {
+        "manageNewAdmins": true,
+        "manageParticipants": true,
+        "manageResults": true,
+        "manageEventRegistrations": true,
+        "managePaymentStatus": true,
+        "eventRightsGiven": {
+          "te1": true,
+          "te2": true,
+          "te3": true,
+          "te4": true,
+          "te5": true,
+          "te6": true,
+          "te7": true,
+          "te8": true,
+          "te9": true,
+          "nte1": true,
+          "nte2": true,
+          "nte3": true,
+          "nte4": true,
+          "nte5": true,
+          "ws1": true
+        }
+      }
+    },
+    {
+      "_id": "2023172468",
+      "adminName": "Michael Brown",
+      "adminPassword": "browniePass",
+      "level": 3,
+      "permissions": {
+        "manageNewAdmins": true,
+        "manageParticipants": true,
+        "manageResults": true,
+        "manageEventRegistrations": true,
+        "managePaymentStatus": true,
+        "eventRightsGiven": {
+          "te1": true,
+          "te2": true,
+          "te3": true,
+          "te4": true,
+          "te5": true,
+          "te6": true,
+          "te7": true,
+          "te8": true,
+          "te9": true,
+          "nte1": true,
+          "nte2": true,
+          "nte3": true,
+          "nte4": true,
+          "nte5": true,
+          "ws1": true
+        }
+      }
+    },
+    {
+      "_id": "2023171357",
+      "adminName": "Sophia Lee",
+      "adminPassword": "sophiaPass321",
+      "level": 2,
+      "permissions": {
+        "manageNewAdmins": false,
+        "manageParticipants": false,
+        "manageResults": false,
+        "manageEventRegistrations": false,
+        "managePaymentStatus": false,
+        "eventRightsGiven": {
+          "te1": false,
+          "te2": false,
+          "te3": false,
+          "te4": false,
+          "te5": false,
+          "te6": false,
+          "te7": false,
+          "te8": false,
+          "te9": false,
+          "nte1": false,
+          "nte2": false,
+          "nte3": false,
+          "nte4": false,
+          "nte5": false,
+          "ws1": false
+        }
+      }
+    }
+  ]
