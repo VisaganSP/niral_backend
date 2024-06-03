@@ -1,5 +1,46 @@
 import mongoose from 'mongoose';
 
+const permitSchema = new mongoose.Schema({
+  status: {
+    type: String,
+    required: true,
+    enum: ['applied', 'verified', 'rejected', 'none'],
+    description: 'must be a string enum and is required',
+  },
+  transactionId: {
+    type: String,
+    required: function () {
+      return this.status === 'verified' || this.status === 'applied' || this.status === 'rejected';
+    },
+    description: 'must be a string and is required',
+  },
+  transactionDate: {
+    type: String,
+    required: function () {
+      return this.status === 'verified' || this.status === 'applied' || this.status === 'rejected';
+    },
+    description: 'must be a string and is required',
+  },
+  updatedDate: {
+    type: String,
+    description: 'must be a string and is required',
+  },
+});
+
+const paymentHistorySchema = new mongoose.Schema({
+  transactionDate: {
+    type: String,
+    required: true,
+    description: 'must be a string and is required',
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'verified', 'rejected'],
+    required: true,
+    description: 'must be a string enum and is required',
+  },
+});
+
 const participantSchema = new mongoose.Schema(
   {
     _id: {
@@ -8,54 +49,75 @@ const participantSchema = new mongoose.Schema(
       description: 'must be a string and is required',
     },
     details: {
-      type: {
-        emailId: {
-          type: String,
-          required: true,
-          unique: true,
-          description: 'must be a string and is required',
-        },
-        firstName: {
-          type: String,
-          required: true,
-          description: 'must be a string and is required',
-        },
-        lastName: {
-          type: String,
-          required: true,
-          description: 'must be a string and is required',
-        },
-        mobileNo: {
-          type: String,
-          required: true,
-          description: 'must be a string and is required',
-        },
-        rollNo: { type: String, description: 'must be a string' },
-        dateOfBirth: {
-          type: String,
-          required: true,
-          description: 'must be a string and is required',
-        },
-        department: { type: String, description: 'must be a string' },
-        branch: { type: String, description: 'must be a string' },
-        year: { type: String, description: 'must be a number' },
-        password: {
-          type: String,
-          description: 'must be a string and is required',
-        },
-        college: { type: String, description: 'must be a string' },
-        state: {
-          type: String,
-          description: 'must be a string and is required',
-        },
-        city: {
-          type: String,
-          description: 'must be a string and is required',
-        },
-        companyName: { type: String, description: 'must be a string' },
-        experience: { type: Number, description: 'must be a number' },
+      emailId: {
+        type: String,
+        required: true,
+        unique: true,
+        description: 'must be a string and is required',
       },
-      required: true,
+      firstName: {
+        type: String,
+        required: true,
+        description: 'must be a string and is required',
+      },
+      lastName: {
+        type: String,
+        required: true,
+        description: 'must be a string and is required',
+      },
+      mobileNo: {
+        type: String,
+        required: true,
+        description: 'must be a string and is required',
+      },
+      rollNo: {
+        type: String,
+        description: 'must be a string',
+      },
+      dateOfBirth: {
+        type: String,
+        required: true,
+        description: 'must be a string and is required',
+      },
+      department: {
+        type: String,
+        description: 'must be a string',
+      },
+      branch: {
+        type: String,
+        description: 'must be a string',
+      },
+      year: {
+        type: String,
+        description: 'must be a string',
+      },
+      password: {
+        type: String,
+        required: true,
+        description: 'must be a string and is required',
+      },
+      college: {
+        type: String,
+        description: 'must be a string',
+      },
+      state: {
+        type: String,
+        required: true,
+        description: 'must be a string and is required',
+      },
+      city: {
+        type: String,
+        required: true,
+        description: 'must be a string and is required',
+      },
+      companyName: {
+        type: String,
+        description: 'must be a string',
+      },
+      experience: {
+        type: Number,
+        description: 'must be a number',
+      },
     },
     organization: {
       type: String,
@@ -64,105 +126,34 @@ const participantSchema = new mongoose.Schema(
       description: 'must be a string enum and is required',
     },
     permit: {
-      type: {
-        p1: {
-          status: {
-            type: String,
-            enum: ['applied', 'verified', 'rejected', 'none'],
-            description: 'must be a string enum',
-          },
-          transactionId: {
-            type: String,
-            description: 'must be a string',
-          },
-          transactionDate:{
-            type:String,
-            description: 'must be a string',
-          },
-          updatedDate:{
-            type:String,
-            description: 'must be a string',
+      p1: permitSchema,
+      p2: permitSchema,
+      p3: permitSchema,
+      p4: permitSchema,
+    },
+    paymentHistory: {
+      type: Map,
+      of: paymentHistorySchema,
+      required: true,
+      default: {}, // Default value as an empty object
+      validate: {
+        validator: function (value) {
+          // Validate each document inside paymentHistory
+          for (const [transactionId, transaction] of value.entries()) {
+            if (
+              !transaction.transactionDate ||
+              !transaction.status ||
+              typeof transaction.transactionDate !== 'string' ||
+              !['pending', 'verified', 'rejected'].includes(transaction.status)
+            ) {
+              return false; // Invalid transaction structure
+            }
           }
+          return true;
         },
-        p2: {
-          status: {
-            type: String,
-            enum: ['applied', 'verified', 'rejected', 'none'],
-            description: 'must be a string enum',
-          },
-          transactionId: {
-            type: String,
-            description: 'must be a string',
-          },
-          transactionDate:{
-            type:String,
-            description: 'must be a string',
-          },
-          updatedDate:{
-            type:String,
-            description: 'must be a string',
-          }
-        },
-        p3: {
-          status: {
-            type: String,
-            enum: ['applied', 'verified', 'rejected', 'none'],
-            description: 'must be a string enum',
-          },
-          transactionId: {
-            type: String,
-            description: 'must be a string',
-          },
-          transactionDate:{
-            type:String,
-            description: 'must be a string',
-          },
-          updatedDate:{
-            type:String,
-            description: 'must be a string',
-          }
-        },
-        p4: {
-          status: {
-            type: String,
-            enum: ['applied', 'verified', 'rejected', 'none'],
-            description: 'must be a string enum',
-          },
-          transactionId: {
-            type: String,
-            description: 'must be a string',
-          },
-          transactionDate:{
-            type:String,
-            description: 'must be a string',
-          },
-          updatedDate:{
-            type:String,
-            description: 'must be a string',
-          }
-        },
+        message: props => `Invalid payment history document: ${props.value}`,
       },
     },
-    paymentHistory: [
-      {
-        transactionDate:{
-          type:String,
-          required:true,
-          description: 'must be a string and is required',
-        },
-        transactionId: {
-          type: String,
-          required: true,
-          description: 'must be a string and is required',
-        },
-        status: {
-          type: String,
-          enum: ['pending', 'verified', 'rejected'],
-          required: true,
-          description: 'must be a string enum and is required',
-        },
-      },
-    ],
     eventsPoints: {
       type: Number,
       description: 'must be a number and is required',
