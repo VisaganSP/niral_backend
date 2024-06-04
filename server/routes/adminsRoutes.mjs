@@ -10,9 +10,9 @@ import {
   manageAdmins,
   removeAdmin,
   manageEvents,
-  getPending,
+  getPendingPayments,
   setStatus,
-  getAll,
+  getAllPayments,
   AdminLogin,
   getAllAdmins,
   getAdmin,
@@ -41,14 +41,13 @@ router.put('/manageAdmins/manage/:adminId', manageAdmins)
 router.delete('/manageAdmins/remove/:adminId', removeAdmin)
 
 // Manage Payments
-router.get('/payments/getAll', getAll)
-router.get('/payments/getPending', getPending)
+router.get('/payments/getAllPayments', getAllPayments)
+router.get('/payments/getPendingPayments', getPendingPayments)
 router.put('/payments/setStatus', setStatus)
-
 
 // Manage Events
 router.get('/events/manage', manageEvents)
-router.get('/events/register', )
-router.get('/events/register', )
+router.get('/events/register')
+router.get('/events/register')
 
-export default router;
+export default router

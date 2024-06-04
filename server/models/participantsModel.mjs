@@ -139,7 +139,7 @@ const participantSchema = new mongoose.Schema(
       type: Map,
       of: paymentHistorySchema,
       required: true,
-      default: {}, // Default value as an empty object
+      default: {}, 
       validate: {
         validator: function (value) {
           // Validate each document inside paymentHistory
