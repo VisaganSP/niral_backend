@@ -33,6 +33,20 @@ const transactionSchema = new mongoose.Schema(
           required: true,
           description: 'must be a string enum and is required',
     },
+    paymentType:{
+      type: String,
+      required: true,
+      description: 'must be a string and is required',
+    },
+    screenShotSent:{
+      type: Boolean,
+      required: true,
+      description: 'must be a boolean and is required',
+    },
+    validity: {
+      type: String,
+      description: 'must be a string and is required',
+    },
   },
   {
     strict: true,

@@ -127,13 +127,13 @@ export const loginParticipant = async (req, res) => {
 
 export const requestPermit = async (req, res) => {
   try {
-    const { permitID, transactionId, transactionDate } = req.body;
-    console.log(permitID, transactionId, transactionDate);
-
+    const { permitID, transactionId, transactionDate, paymentType, screenShotSent, validity } = req.body;
+    // console.log(permitID, transactionId, transactionDate, paymentType, screenShotSent);
+console.log(validity);
     // Check for token in headers
     const token = req.headers.authorization;
     if (!token) {
-      return res.status(401).json({ error: "Unauthorized: Token missing" });
+      return res.status(401).json({ error: "Unauthorized: Token missing", errorMessage:'Unauthorized Request' });
     }
 
     // Validate token
@@ -143,24 +143,28 @@ export const requestPermit = async (req, res) => {
     }
 
     const { uid } = decodedToken;
-    console.log(decodedToken, transactionId, uid, transactionDate);
+    // console.log(decodedToken, transactionId, uid, transactionDate);
 
     // Find participant by ID
     const participant = await ParticipantsModel.findById(uid);
+    // console.log(participant);
     if (!participant) {
       return res.status(404).json({ error: "Participant not found" });
     }
-    console.log(participant.permit, permitID);
+    // console.log(participant.permit, permitID);
 
+
+    // console.log(participant..status);
     // Check if permit exists
     if (
       participant.permit &&
-      permitID in participant.permit &&
-      participant.permit.permitID &&
-      (participant.permit.permitID.status !== "applied" || "verified")
+      participant.permit[permitID] &&
+      participant.permit[permitID].status &&
+      (participant.permit[permitID].status === "applied" || participant.permit.p1.status === "pending" || participant.permit.p1.status === "verified")
     ) {
       // Do not allow the user if his permit is rejected or verified.
-      return res.json({ errorMessage: "Permit already exists" });
+      // console.log(true);
+      return res.status(400).json({ errorMessage: "Permit already exists" });
     }
 
     // Add permit if it doesn't exist
@@ -168,8 +172,13 @@ export const requestPermit = async (req, res) => {
     participant.permit[permitID] = {
       status: "applied",
       transactionId: transactionId,
+      transactionDate: transactionDate,
+      paymentType: paymentType,
+      validity :validity
     };
 
+  
+    
     // Attempt to create a new transaction
     try {
       await Transaction.create({
@@ -178,6 +187,9 @@ export const requestPermit = async (req, res) => {
         status: "pending",
         transactionDate: transactionDate,
         permitId: permitID,
+        paymentType: paymentType,
+        screenShotSent: screenShotSent,
+        validity: validity
       });
     } catch (err) {
       if (err.code === 11000) {
@@ -199,16 +211,20 @@ export const requestPermit = async (req, res) => {
     //   status: "pending",
     // });
 
-    participant.paymentHistory[transactionId] = {
-      transactionDate: transactionDate,
-      status: "pending",
-      updatedDate:
-        new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString(),
-    };
-
+    participant.paymentHistory = new Map([
+      ...participant.paymentHistory,
+      [transactionId, {
+        transactionDate: transactionDate,
+        status: 'pending',
+        paymentType: paymentType,
+      }],
+    ]);
+    
     // Save the participant
     await participant.save();
-
+    
+    // const participantT = await ParticipantsModel.findById(uid)
+    // console.log(participantT.paymentHistory[transactionId], participantT);
     return res.status(200).json({ message: "Permit added successfully" });
   } catch (error) {
     console.error(error);

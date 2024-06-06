@@ -25,6 +25,17 @@ const permitSchema = new mongoose.Schema({
     type: String,
     description: 'must be a string and is required',
   },
+  validity: {
+    type: String,
+    description: 'must be a string and is required',
+  },
+  paymentType: {
+    type: String,
+      required: function () {
+        return this.status === 'verified' || this.status === 'applied' || this.status === 'rejected';
+      },
+    description: 'must be a string and is required',
+  },
 });
 
 const paymentHistorySchema = new mongoose.Schema({
@@ -41,6 +52,11 @@ const paymentHistorySchema = new mongoose.Schema({
   },
   updatedDate: {
     type: String,
+    description: 'must be a string and is required',
+  },
+  paymentType: {
+    type: String,
+    required: true,
     description: 'must be a string and is required',
   },
 });
@@ -95,23 +111,23 @@ const participantSchema = new mongoose.Schema(
         type: String,
         description: 'must be a string',
       },
-      password: {
-        type: String,
-        required: true,
-        description: 'must be a string and is required',
-      },
+      // password: {
+      //   type: String,
+      //   required: true,
+      //   description: 'must be a string and is required',
+      // },
       college: {
         type: String,
         description: 'must be a string',
       },
       state: {
         type: String,
-        required: true,
+        // required: true,
         description: 'must be a string and is required',
       },
       city: {
         type: String,
-        required: true,
+        // required: true,
         description: 'must be a string and is required',
       },
       companyName: {
