@@ -23,7 +23,8 @@ Thumbs.db
 
 # Build artifacts
 build/
-dist/
+# dist/
+env.js
 
 # Compiled binary addons (if any)
 *.node

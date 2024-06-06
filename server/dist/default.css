@@ -1,0 +1,92 @@
+.clickable {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.clickable:hover,
+.clickable:focus {
+  filter: brightness(90%);
+}
+.clickable:active {
+  transform: scale(95%);
+}
+
+/* Flex */
+.flex {
+  display: flex;
+}
+.fdc {
+  flex-direction: column;
+}
+.fdcr{
+  flex-direction: column-reverse;
+}
+.fdrr{flex-direction: row-reverse;}
+.fdr {
+  flex-direction: row;
+}
+.fww {
+  flex-wrap: wrap;
+}
+.jcc {
+  justify-content: center;
+}
+.jcsb {
+  justify-content: space-between;
+}
+.jcse {
+  justify-content: space-evenly;
+}
+.jcsa{
+  justify-content: space-around ;
+}
+.jcs{
+  justify-content: start;
+}
+.aic {
+  align-items: center;
+  
+}
+.aie{
+  align-items: end;
+}
+.acsb{align-content: space-between;}
+/* Display */
+.block {
+  display: block;
+}
+.inline {
+  display: inline;
+}
+.grid{
+  display: grid;
+}
+.dnone {
+  display: none;
+}
+
+/* Position */
+.fixed {
+  position: fixed;
+}
+.sticky {
+  position: sticky;
+}
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+
+
+/* Text */
+/* .tac{
+  text-align: center;
+}
+.tal{
+  text-align: left;
+}
+.tar{
+  text-align: right;
+}
+. */
